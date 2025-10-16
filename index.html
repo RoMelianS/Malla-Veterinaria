@@ -5,77 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Medicina Veterinaria - Universidad de Los Lagos</title>
   <style>
+    /* === PALETA DE COLORES ===
+       Verde oscuro: #1B5E20
+       Verde medio: #388E3C
+       Verde suave: #81C784
+       Verde claro: #C8E6C9
+       Fondo muy claro: #F1F8E9
+    */
+
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #98ff96; /* Corregido: había ## */
+      background-color: #F1F8E9;
       margin: 0;
-      padding: 1rem;
-      color: #333;
+      padding: 2rem;
+      color: #1B5E20;
     }
+
     h1 {
       text-align: center;
-      color: #009929;
+      color: #1B5E20;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
     }
+
     .malla {
       display: flex;
       flex-direction: column;
       gap: 2rem;
       margin-top: 2rem;
     }
+
     .fila {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
+
     .semestre {
       flex: 1;
-      background-color: #e8f5e9;
-      border: 2px solid #266040;
-      border-radius: 8px;
+      background-color: #C8E6C9;
+      border: 2px solid #388E3C;
+      border-radius: 12px;
       padding: 1rem;
-      min-width: 200px;
+      min-width: 220px;
+      box-shadow: 0 4px 8px rgba(56, 142, 60, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .semestre:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(56, 142, 60, 0.3);
+    }
+
     .semestre h2 {
       text-align: center;
-      color: #266040;
+      color: #1B5E20;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
     }
+
     .ramo {
-      background-color: #bee0ca;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 4px;
+      background-color: #E8F5E9;
+      margin: 0.4rem 0;
+      padding: 0.6rem;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s;
       position: relative;
+      font-size: 0.95rem;
+      color: #1B5E20;
+      border: 1px solid #A5D6A7;
     }
+
     .ramo:hover {
-      background-color: #f8cfa6;
+      background-color: #AED581;
+      transform: scale(1.02);
     }
+
     .ramo.aprobado {
-      background-color: #609a77;
+      background-color: #81C784;
+      color: #ffffff;
       text-decoration: line-through;
+      border: 1px solid #66BB6A;
     }
+
     .ramo.bloqueado {
-      background-color: #437c5b;
+      background-color: #A5D6A7;
+      color: #33691E;
       cursor: not-allowed;
+      opacity: 0.7;
     }
+
     .tooltip {
       visibility: hidden;
-      background-color: #333;
+      background-color: rgba(27, 94, 32, 0.9);
       color: #fff;
       text-align: center;
       border-radius: 6px;
-      padding: 5px;
+      padding: 5px 8px;
       position: absolute;
       z-index: 1;
-      bottom: 100%;
+      bottom: 120%;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.3s ease;
       font-size: 0.8rem;
+      width: max-content;
+      max-width: 200px;
     }
+
     .ramo:hover .tooltip {
       visibility: visible;
       opacity: 1;
@@ -123,19 +163,19 @@
       { id: "microbiologia", nombre: "Microbiología", semestre: 5, prereq: ["inmunologia"] },
       { id: "pato_siste", nombre: "Patología Sistémica", semestre: 5, prereq: ["fisiopatologia"] },
       { id: "reproduccion", nombre: "Reproducción Animal", semestre: 5, prereq: ["genetica"] },
-      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },  
-      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] }, 
+      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },
+      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] },
 
       { id: "poligastrico", nombre: "Producción Poligástricos", semestre: 6, prereq: ["alimentacion"] },
       { id: "monogastrico", nombre: "Producción Monogástricos", semestre: 6, prereq: ["alimentacion"] },
       { id: "imagenologia", nombre: "Imagenología", semestre: 6, prereq: ["anato_II"] },
       { id: "semiologia", nombre: "Semiología", semestre: 6, prereq: ["pato_siste"] },
       { id: "laboratorio", nombre: "Laboratorio Clínico", semestre: 6, prereq: ["inmunologia"] },
-      { id: "tecnologia", nombre: "Tecnología e inocuidad de los alimentos de origen animal", semestre: 6, prereq: [] },
+      { id: "tecnologia", nombre: "Tecnología e Inocuidad de los Alimentos", semestre: 6, prereq: [] },
       { id: "electivo_I", nombre: "Electivo Formación Integral", semestre: 6, prereq: [] },
 
       { id: "acuicola", nombre: "Producción Acuícola", semestre: 7, prereq: ["genetica"] },
-      { id: "ia", nombre: "Inteligencia Artificial e Innovación Tecnológica en Medicina Veterinaria", semestre: 7, prereq: [] },
+      { id: "ia", nombre: "Inteligencia Artificial e Innovación Tecnológica", semestre: 7, prereq: [] },
       { id: "metodologia", nombre: "Metodología de la Investigación", semestre: 7, prereq: ["bioestadistica"] },
       { id: "cirugia", nombre: "Cirugía y Anestesia", semestre: 7, prereq: ["imagenologia"] },
       { id: "med_interna", nombre: "Medicina Interna", semestre: 7, prereq: ["semiologia", "laboratorio"] },
