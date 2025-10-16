@@ -29,18 +29,18 @@
     }
     .semestre {
       flex: 1;
-      background-color: #fceae4;
-      border: 2px solid #e67e22;
+      background-color: #266040;
+      border: 2px solid #266040;
       border-radius: 8px;
       padding: 1rem;
       min-width: 200px;
     }
     .semestre h2 {
       text-align: center;
-      color: #bee0ca;
+      color: #266040;
     }
     .ramo {
-      background-color: #7db894;
+      background-color: #bee0ca;
       margin: 0.5rem 0;
       padding: 0.5rem;
       border-radius: 4px;
@@ -52,11 +52,11 @@
       background-color: #f8cfa6;
     }
     .ramo.aprobado {
-      background-color: #d4efdf;
+      background-color: #609a77;
       text-decoration: line-through;
     }
     .ramo.bloqueado {
-      background-color: #f5b7b1;
+      background-color: #437c5b;
       cursor: not-allowed;
     }
     .tooltip {
@@ -103,25 +103,27 @@
       { id: "histo", nombre: "Histología y Embriología", semestre: 2, prereq: ["fisiologia"]},
         { id: "ciudadania", nombre: "Ciudadanía para el buen vivir", semestre: 2, prereq: [] },
 
-      { id: "ingles1", nombre: "Inglés I", semestre: 3, prereq: [] },
-      { id: "epidemiologia", nombre: "Epidemiología", semestre: 3, prereq: [] },
-      { id: "psicologia", nombre: "Psicología", semestre: 3, prereq: [] },
-      { id: "farmacologia", nombre: "Fisiopatología y Farmacología", semestre: 3, prereq: ["fisiologia"] },
-      { id: "fisio_gine", nombre: "Bases Fisiológicas en Ginecología", semestre: 3, prereq: [] },
-      { id: "proceso_ssr", nombre: "Proceso de Enfermería en SSR", semestre: 3, prereq: ["enfermeria", "fisiologia"] },
+      { id: "economia", nombre: "Economía y fundamentos de la administración pecuaria", semestre: 3, prereq: [] },
+      { id: "anato_II", nombre: "Anatomía Animal  II", semestre: 3, prereq: [“anato”] },
+      { id: "bioestadistica", nombre: "Bioestadística", semestre: 3, prereq: [“matematicas”] },
+      { id: "bioetica", nombre: "Bioética", semestre: 3, prereq: [] },
+      { id: "fisio_animal", nombre: "Fisiología Animal", semestre: 3, prereq: ["histo"] },
+      { id: "ingles_I", nombre: "Inglés I", semestre: 3, prereq: ["enfermeria", "fisiologia"] },
 
-      { id: "ingles2", nombre: "Inglés II", semestre: 4, prereq: ["ingles1"] },
-      { id: "fisio_obs", nombre: "Bases Fisiológicas en Obstetricia y Neonatología", semestre: 4, prereq: [] },
-      { id: "patogine", nombre: "Bases Patológicas en Ginecología", semestre: 4, prereq: ["fisio_gine"] },
-      { id: "saludfam", nombre: "Salud Familiar y Comunitaria", semestre: 4, prereq: [] },
-      { id: "proceso_gineobs", nombre: "Proceso de Enfermería en Gineco-Obstetricia", semestre: 4, prereq: ["proceso_ssr", "farmacologia"] },
-      { id: "electivo2", nombre: "Electivo UFIN", semestre: 4, prereq: [] },
+      { id: "epidemiologia", nombre: "Epidemiología", semestre: 4, prereq: ["bioestadistica"] },
+      { id: "nutricion", nombre: "Nutrición Animal", semestre: 4, prereq: [] },
+      { id: "fisiopatologia", nombre: "Fisiopatología", semestre: 4, prereq: ["fisio_animal"] },
+      { id: "practica", nombre: "Práctica Inicial", semestre: 4, prereq: ["fisio_animal"] },
+      { id: "inmunologia", nombre: "Inmunología", semestre: 4, prereq: ["bioquimica",] },
+      { id: "genetica", nombre: "Genética", semestre: 4, prereq: [“bioestadistica”] },
+      { id: "ingles_II", nombre: "Inglés II", semestre: 4, prereq: ["ingles_I"] },
 
-      { id: "ingles3", nombre: "Inglés III", semestre: 5, prereq: ["ingles2"] },
-      { id: "gestion_ssr", nombre: "Introducción a la Gestión en SSR", semestre: 5, prereq: [] },
-      { id: "pato_obsneo", nombre: "Bases Patológicas en Obstetricia y Neonatología", semestre: 5, prereq: ["fisio_obs", "farmacologia"] },
-      { id: "educacion_ssr", nombre: "Educación en SSR", semestre: 5, prereq: ["patogine"] },
-      { id: "salud_aps", nombre: "Salud Familiar en APS", semestre: 5, prereq: ["saludfam", "patogine", "enfermeria", "proceso_ssr", "proceso_gineobs"] },
+      { id: "alimentacion", nombre: "Alimentación Animal", semestre: 5, prereq: ["nutricion"] },
+      { id: "microbiologia", nombre: "Microbiología", semestre: 5, prereq: ["inmunologia"] },
+      { id: "pato_siste", nombre: "Patología Sistémica", semestre: 5, prereq: ["fisiopatologia"] },
+      { id: "reproduccion", nombre: "Reproducción Animal", semestre: 5, prereq: ["genetica"] },
+      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },  
+      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] }, 
 
       { id: "ingles4", nombre: "Inglés IV", semestre: 6, prereq: ["ingles3"] },
       { id: "investigacion", nombre: "Metodología de la Investigación", semestre: 6, prereq: [] },
@@ -183,4 +185,3 @@
   </script>
 </body>
 </html>
-
