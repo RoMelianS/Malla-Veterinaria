@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medicina Veterinaria - Universidad de Los Lagos</title>
+  <title>Malla Medicina Veterinaria - Universidad de Los Lagos</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #fff6f2;
+      background-color: ##98ff96;
       margin: 0;
       padding: 1rem;
       color: #333;
     }
     h1 {
       text-align: center;
-      color: #c0392b;
+      color: #009929;
     }
     .malla {
       display: flex;
@@ -29,18 +29,18 @@
     }
     .semestre {
       flex: 1;
-      background-color: #fceae4;
-      border: 2px solid #e67e22;
+      background-color: #266040;
+      border: 2px solid #266040;
       border-radius: 8px;
       padding: 1rem;
       min-width: 200px;
     }
     .semestre h2 {
       text-align: center;
-      color: #d35400;
+      color: #266040;
     }
     .ramo {
-      background-color: #fde3cf;
+      background-color: #bee0ca;
       margin: 0.5rem 0;
       padding: 0.5rem;
       border-radius: 4px;
@@ -52,11 +52,11 @@
       background-color: #f8cfa6;
     }
     .ramo.aprobado {
-      background-color: #d4efdf;
+      background-color: #609a77;
       text-decoration: line-through;
     }
     .ramo.bloqueado {
-      background-color: #f5b7b1;
+      background-color: #437c5b;
       cursor: not-allowed;
     }
     .tooltip {
@@ -82,7 +82,7 @@
   </style>
 </head>
 <body>
-  <h1>Malla Medicina Veterinaria - Universidad de Los Lagos</h1>
+  <h1>Malla Medicina Veterinaria- Universidad de Los Lagos</h1>
   <div class="malla">
     <div class="fila" id="fila-superior"></div>
     <div class="fila" id="fila-inferior"></div>
@@ -125,23 +125,37 @@
       { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },  
       { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] }, 
 
-      { id: "ingles4", nombre: "Inglés IV", semestre: 6, prereq: ["ingles3"] },
-      { id: "investigacion", nombre: "Metodología de la Investigación", semestre: 6, prereq: [] },
-      { id: "clinica_perinatal", nombre: "Clínica de Cuidados Perinatales", semestre: 6, prereq: ["pato_obsneo", "salud_aps", "farmacologia", "enfermeria", "proceso_ssr", "proceso_gineobs"] },
-      { id: "electivo3", nombre: "Electivo UFIN", semestre: 6, prereq: [] },
+      { id: "poligastrico", nombre: "Producción Poligástricos", semestre: 6, prereq: ["alimentacion"] },
+      { id: "monogastrico", nombre: "Producción Monogástricos", semestre: 6, prereq: ["alimentacion"] },
+      { id: "imagenologia", nombre: "Imagenología", semestre: 6, prereq: ["anato_II"] },
+      { id: "semiologia", nombre: "Semiología", semestre: 6, prereq: [“pato_siste”] },
+     { id: "laboratorio", nombre: "Laboratorio Clínico", semestre: 6, prereq: [“inmunologia] },
+     { id: "tecnologia", nombre: "Tecnología e inocuidad de los alimentos de origen animal", semestre: 6, prereq: [] },
+     { id: "electivo_I", nombre: "Electivo Formación Integral", semestre: 6, prereq: [] },
 
-      { id: "seminario", nombre: "Seminario de Investigación", semestre: 7, prereq: ["investigacion"] },
-      { id: "gineonco", nombre: "Clínica Gine-oncológica", semestre: 7, prereq: ["patogine", "salud_aps", "farmacologia", "enfermeria", "proceso_ssr", "proceso_gineobs"] },
-      { id: "electivo4", nombre: "Electivo Farmacología Aplicada", semestre: 7, prereq: [] },
+      { id: "acuicola", nombre: "Producción Acuícola", semestre: 7, prereq: ["genetica"] },
+      { id: "ia", nombre: "Inteligencia Artificial e Innovación Tecnológica en Medicina Veterinaria", semestre: 7, prereq: [] },
+      { id: "metodologia", nombre: "Metodología de la Investigación", semestre: 7, prereq: [“bioestadistica”] },
 
-      { id: "ciudadania2", nombre: "Gestión de Proyectos (Ciudadanía II)", semestre: 8, prereq: [] },
-      { id: "perinatal_pato", nombre: "Clínica Perinatal Patológica", semestre: 8, prereq: ["clinica_perinatal", "enfermeria", "proceso_ssr", "proceso_gineobs"] },
+      { id: "cirugia", nombre: "Cirugía y Anestesia", semestre: 7, prereq: [“imagenologia”] },
+      { id: "med_interna", nombre: "Medicina Interna", semestre: 7, prereq: ["semiologia", "laboratorio"] },
+     { id: "zoonosis", nombre: "Salud Pública y Zoonosis", semestre: 7, prereq: [“epidemiologia”] },
+     { id: "electivo_II", nombre: "Electivo Formación Integral", semestre: 7, prereq: [] },
 
-      { id: "internado1", nombre: "Internado I", semestre: 9, prereq: ["ciudadania2", "perinatal_pato"] },
+ { id: "patologia", nombre: "Patología Acuícola", semestre: 8, prereq: ["acuicola"] },
+      { id: "seminario", nombre: "Seminario de Investigación", semestre: 8, prereq: ["metodologia"] },
+     { id: "menores", nombre: "Clínica Animales Menores", semestre: 8, prereq: ["cirugia", "med_interna"]},
+   { id: "mayores", nombre: "Clínica Animales Mayores", semestre: 8, prereq: ["cirugia", "med_interna"]},
+     { id: "gestion", nombre: "Gestión Veterinaria", semestre: 8, prereq: ["economia"] },
 
-      { id: "internado2", nombre: "Internado II", semestre: 10, prereq: ["ciudadania2", "perinatal_pato"] },
-      { id: "electivo_final", nombre: "Electivo Especialización/Postgrado", semestre: 10, prereq: ["internado2"] }
-    ];
+      { id: "titulacion_I", nombre: "Trabajo de Titulación I", semestre: 9, prereq: ["seminario"] },
+      { id: "internado_I", nombre: "Internado I ", semestre: 9, prereq: ["mayores", “menores”] },
+      { id: "profundizacion_1", nombre: "Electivo de Profundización", semestre: 9, prereq: [] },
+      { id: "profundizacion_2", nombre: "Electivo de profundización 2", semestre: 9, prereq: [] },
+
+      { id: "titulacion_II", nombre: "Trabajo de Titulación II", semestre: 10, prereq: ["titulacion_I"] },
+      { id: "internado_II", nombre: "Internado II", semestre: 10, prereq: ["internado_I"] },
+      { id: "profundizacion_3", nombre: "Electivo de profundización 3", semestre: 9, prereq: [] },
 
     const estado = JSON.parse(localStorage.getItem("estadoRamos") || "{}");
 
