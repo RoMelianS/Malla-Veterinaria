@@ -5,27 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Medicina Veterinaria - Universidad de Los Lagos</title>
   <style>
-    /* === PALETA DE COLORES ===
-       Verde oscuro: #1B5E20
-       Verde medio: #388E3C
-       Verde suave: #81C784
-       Verde claro: #C8E6C9
-       Fondo muy claro: #F1F8E9
+    /* 🎨 Paleta armónica:
+       Verde menta: #DFF5E1
+       Verde suave: #A8D5BA
+       Verde medio: #6DBE8A
+       Verde oscuro suave: #3E8E61
+       Verde bosque: #2E6D4B
     */
 
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #F1F8E9;
+      background-color: #DFF5E1;
       margin: 0;
-      padding: 2rem;
-      color: #1B5E20;
+      padding: 1rem;
+      color: #2E6D4B;
     }
 
     h1 {
       text-align: center;
-      color: #1B5E20;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      color: #2E6D4B;
+      text-shadow: 1px 1px 2px rgba(46, 109, 75, 0.2);
     }
 
     .malla {
@@ -38,82 +37,79 @@
     .fila {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .semestre {
       flex: 1;
-      background-color: #C8E6C9;
-      border: 2px solid #388E3C;
+      background-color: #A8D5BA;
+      border: 2px solid #6DBE8A;
       border-radius: 12px;
       padding: 1rem;
       min-width: 220px;
-      box-shadow: 0 4px 8px rgba(56, 142, 60, 0.2);
+      box-shadow: 0 4px 8px rgba(46, 109, 75, 0.15);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .semestre:hover {
       transform: translateY(-4px);
-      box-shadow: 0 6px 12px rgba(56, 142, 60, 0.3);
+      box-shadow: 0 6px 12px rgba(46, 109, 75, 0.25);
     }
 
     .semestre h2 {
       text-align: center;
-      color: #1B5E20;
-      font-size: 1.2rem;
+      color: #2E6D4B;
       margin-bottom: 0.8rem;
     }
 
     .ramo {
-      background-color: #E8F5E9;
-      margin: 0.4rem 0;
+      background-color: #EAF9EE;
+      margin: 0.5rem 0;
       padding: 0.6rem;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       position: relative;
       font-size: 0.95rem;
-      color: #1B5E20;
-      border: 1px solid #A5D6A7;
+      border-left: 4px solid #6DBE8A;
     }
 
     .ramo:hover {
-      background-color: #AED581;
-      transform: scale(1.02);
+      background-color: #CFF0D6;
+      transform: translateX(3px);
     }
 
     .ramo.aprobado {
-      background-color: #81C784;
-      color: #ffffff;
+      background-color: #B4E2C2;
       text-decoration: line-through;
-      border: 1px solid #66BB6A;
+      color: #3E8E61;
+      border-left-color: #3E8E61;
     }
 
     .ramo.bloqueado {
-      background-color: #A5D6A7;
-      color: #33691E;
+      background-color: #C6DCC9;
       cursor: not-allowed;
-      opacity: 0.7;
+      color: #7A8F7F;
+      border-left-color: #7A8F7F;
     }
 
     .tooltip {
       visibility: hidden;
-      background-color: rgba(27, 94, 32, 0.9);
+      background-color: #2E6D4B;
       color: #fff;
       text-align: center;
       border-radius: 6px;
       padding: 5px 8px;
       position: absolute;
       z-index: 1;
-      bottom: 120%;
+      bottom: 110%;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s;
       font-size: 0.8rem;
-      width: max-content;
-      max-width: 200px;
+      white-space: nowrap;
     }
 
     .ramo:hover .tooltip {
@@ -140,62 +136,9 @@
       { id: "ecologia", nombre: "Ecología", semestre: 2, prereq: [] },
       { id: "anato", nombre: "Anatomía Animal I", semestre: 2, prereq: [] },
       { id: "fisica", nombre: "Física", semestre: 2, prereq: [] },
-      { id: "bioquimica", nombre: "Bioquímica", semestre: 2, prereq: ["quimica", "biocel"] },
+      { id: "bioquimica", nombre: "Bioquímica", semestre: 2, prereq: ["quimica","biocel"] },
       { id: "histo", nombre: "Histología y Embriología", semestre: 2, prereq: [] },
-      { id: "ciudadania", nombre: "Ciudadanía para el buen vivir", semestre: 2, prereq: [] },
-
-      { id: "economia", nombre: "Economía y fundamentos de la administración pecuaria", semestre: 3, prereq: [] },
-      { id: "anato_II", nombre: "Anatomía Animal II", semestre: 3, prereq: ["anato"] },
-      { id: "bioestadistica", nombre: "Bioestadística", semestre: 3, prereq: ["matematicas"] },
-      { id: "bioetica", nombre: "Bioética", semestre: 3, prereq: [] },
-      { id: "fisio_animal", nombre: "Fisiología Animal", semestre: 3, prereq: ["histo"] },
-      { id: "ingles_I", nombre: "Inglés I", semestre: 3, prereq: [] },
-
-      { id: "epidemiologia", nombre: "Epidemiología", semestre: 4, prereq: ["bioestadistica"] },
-      { id: "nutricion", nombre: "Nutrición Animal", semestre: 4, prereq: [] },
-      { id: "fisiopatologia", nombre: "Fisiopatología", semestre: 4, prereq: ["fisio_animal"] },
-      { id: "practica", nombre: "Práctica Inicial", semestre: 4, prereq: ["fisio_animal"] },
-      { id: "inmunologia", nombre: "Inmunología", semestre: 4, prereq: ["bioquimica"] },
-      { id: "genetica", nombre: "Genética", semestre: 4, prereq: ["bioestadistica"] },
-      { id: "ingles_II", nombre: "Inglés II", semestre: 4, prereq: ["ingles_I"] },
-
-      { id: "alimentacion", nombre: "Alimentación Animal", semestre: 5, prereq: ["nutricion"] },
-      { id: "microbiologia", nombre: "Microbiología", semestre: 5, prereq: ["inmunologia"] },
-      { id: "pato_siste", nombre: "Patología Sistémica", semestre: 5, prereq: ["fisiopatologia"] },
-      { id: "reproduccion", nombre: "Reproducción Animal", semestre: 5, prereq: ["genetica"] },
-      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },
-      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] },
-
-      { id: "poligastrico", nombre: "Producción Poligástricos", semestre: 6, prereq: ["alimentacion"] },
-      { id: "monogastrico", nombre: "Producción Monogástricos", semestre: 6, prereq: ["alimentacion"] },
-      { id: "imagenologia", nombre: "Imagenología", semestre: 6, prereq: ["anato_II"] },
-      { id: "semiologia", nombre: "Semiología", semestre: 6, prereq: ["pato_siste"] },
-      { id: "laboratorio", nombre: "Laboratorio Clínico", semestre: 6, prereq: ["inmunologia"] },
-      { id: "tecnologia", nombre: "Tecnología e Inocuidad de los Alimentos", semestre: 6, prereq: [] },
-      { id: "electivo_I", nombre: "Electivo Formación Integral", semestre: 6, prereq: [] },
-
-      { id: "acuicola", nombre: "Producción Acuícola", semestre: 7, prereq: ["genetica"] },
-      { id: "ia", nombre: "Inteligencia Artificial e Innovación Tecnológica", semestre: 7, prereq: [] },
-      { id: "metodologia", nombre: "Metodología de la Investigación", semestre: 7, prereq: ["bioestadistica"] },
-      { id: "cirugia", nombre: "Cirugía y Anestesia", semestre: 7, prereq: ["imagenologia"] },
-      { id: "med_interna", nombre: "Medicina Interna", semestre: 7, prereq: ["semiologia", "laboratorio"] },
-      { id: "zoonosis", nombre: "Salud Pública y Zoonosis", semestre: 7, prereq: ["epidemiologia"] },
-      { id: "electivo_II", nombre: "Electivo Formación Integral", semestre: 7, prereq: [] },
-
-      { id: "patologia", nombre: "Patología Acuícola", semestre: 8, prereq: ["acuicola"] },
-      { id: "seminario", nombre: "Seminario de Investigación", semestre: 8, prereq: ["metodologia"] },
-      { id: "menores", nombre: "Clínica Animales Menores", semestre: 8, prereq: ["cirugia", "med_interna"]},
-      { id: "mayores", nombre: "Clínica Animales Mayores", semestre: 8, prereq: ["cirugia", "med_interna"]},
-      { id: "gestion", nombre: "Gestión Veterinaria", semestre: 8, prereq: ["economia"] },
-
-      { id: "titulacion_I", nombre: "Trabajo de Titulación I", semestre: 9, prereq: ["seminario"] },
-      { id: "internado_I", nombre: "Internado I", semestre: 9, prereq: ["mayores", "menores"] },
-      { id: "profundizacion_1", nombre: "Electivo de Profundización 1", semestre: 9, prereq: [] },
-      { id: "profundizacion_2", nombre: "Electivo de Profundización 2", semestre: 9, prereq: [] },
-
-      { id: "titulacion_II", nombre: "Trabajo de Titulación II", semestre: 10, prereq: ["titulacion_I"] },
-      { id: "internado_II", nombre: "Internado II", semestre: 10, prereq: ["internado_I"] },
-      { id: "profundizacion_3", nombre: "Electivo de Profundización 3", semestre: 10, prereq: [] }
+      { id: "ciudadania", nombre: "Ciudadanía para el buen vivir", semestre: 2, prereq: [] }
     ];
 
     const estado = JSON.parse(localStorage.getItem("estadoRamos") || "{}");
@@ -230,7 +173,7 @@
       return div;
     }
 
-    for (let s = 1; s <= 10; s++) {
+    for (let s = 1; s <= 2; s++) {
       const cont = document.createElement("div");
       cont.className = "semestre";
       cont.innerHTML = `<h2>Semestre ${s}</h2>`;
