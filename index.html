@@ -101,7 +101,7 @@
       { id: "anato", nombre: "Anatomía Animal I", semestre: 2, prereq: [] },
       { id: "fisica", nombre: "Física", semestre: 2, prereq: [] },
       { id: "bioquimica", nombre: "Bioquímica", semestre: 2, prereq: ["quimica", "biocel"] },
-      { id: "histo", nombre: "Histología y Embriología", semestre: 2, prereq: [] },
+      { id: "histo", nombre: "Histología y Embriología", semestre: 2, prereq: ["biocel"] },
       { id: "ciudadania", nombre: "Ciudadanía para el buen vivir", semestre: 2, prereq: [] },
 
       { id: "economia", nombre: "Economía y fundamentos de la administración pecuaria", semestre: 3, prereq: [] },
@@ -123,8 +123,8 @@
       { id: "microbiologia", nombre: "Microbiología", semestre: 5, prereq: ["inmunologia"] },
       { id: "pato_siste", nombre: "Patología Sistémica", semestre: 5, prereq: ["fisiopatologia"] },
       { id: "reproduccion", nombre: "Reproducción Animal", semestre: 5, prereq: ["genetica"] },
-      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["zoo"] },  
-      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["fisiopatologia"] }, 
+      { id: "farmacologia", nombre: "Farmacología", semestre: 5, prereq: ["fisiopatologia"] },  
+      { id: "parasitologia", nombre: "Parasitología", semestre: 5, prereq: ["zoo"] }, 
 
       { id: "poligastrico", nombre: "Producción Poligástricos", semestre: 6, prereq: ["alimentacion"] },
       { id: "monogastrico", nombre: "Producción Monogástricos", semestre: 6, prereq: ["alimentacion"] },
@@ -147,6 +147,7 @@
       { id: "menores", nombre: "Clínica Animales Menores", semestre: 8, prereq: ["cirugia", "med_interna"]},
       { id: "mayores", nombre: "Clínica Animales Mayores", semestre: 8, prereq: ["cirugia", "med_interna"]},
       { id: "gestion", nombre: "Gestión Veterinaria", semestre: 8, prereq: ["economia"] },
+      { id: "etica", nombre: "Ética Médica Veterinaria", semestre: 8, prereq: ["bioetica"] },
 
       { id: "titulacion_I", nombre: "Trabajo de Titulación I", semestre: 9, prereq: ["seminario"] },
       { id: "internado_I", nombre: "Internado I", semestre: 9, prereq: ["mayores", "menores"] },
